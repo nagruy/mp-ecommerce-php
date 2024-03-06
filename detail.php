@@ -1,9 +1,10 @@
+<?php if ( ! isset( $_GET[ 'status' ] ) ) require 'checkout-pro/mp.php'; // Solution hook ?>
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <!-- Script de Seguridad de Mercado Pago -->
     <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
-
+    
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
@@ -116,6 +117,7 @@
                                     </div>
 
                                 </div>
+                                
                                 <div class="as-producttile-info" style="float:left;min-height: 168px;">
                                     <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                         <div class="as-producttile-title">
@@ -126,14 +128,63 @@
 
                                             </h3>
                                         </div>
-                                        <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                        <?php if ( ! isset( $_GET[ 'status' ] ) ): ?>
+                                            <h3>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
-                                        <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                        <h3>
+                                            <?php echo $_POST['unit'] ?>
                                         </h3>
+                                        <?php else: ?>
+                                            <?php if ( 'approved' === $_GET[ 'status' ] ): ?>
+                                                <h2>Felicitaciones por tu nueva compra!</h2>
+                                                <table>
+                                                    <tr>
+                                                        <td>Estado de pago: </td>
+                                                        <td><?= $_GET[ 'status' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID de pago: </td>
+                                                        <td><?= $_GET[ 'payment_id' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Merchant order ID: </td>
+                                                        <td><?= $_GET[ 'merchant_order_id' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID de preferencia: </td>
+                                                        <td><?= $_GET[ 'preference_id' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID de sitio: </td>
+                                                        <td><?= $_GET[ 'site_id' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tipo de pago: </td>
+                                                        <td><?= $_GET[ 'payment_type' ] ?></td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td>Modo de procesamiento: </td>
+                                                        <td><?= $_GET[ 'processing_mode' ] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Referencia externa: </td>
+                                                        <td><?= $_GET[ 'external_reference' ] ?></td>
+                                                    </tr>
+                                                </table>
+                                            <?php endif; ?>
+                                            
+                                            <?php if ( 'rejected' === $_GET[ 'status' ] ): ?>
+                                                <h2>Lamentamos que tu pago haya sido rechazado, intenta nuevamente!</h2>
+                                            <?php endif; ?>
+                                            
+                                        <?php endif; ?>
+                                        
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <?php if ( ! isset( $_GET[ 'status' ] ) ): ?>
+                                        <button type="submit" class="mercadopago-button" formmethod="post" onclick="window.location.href = '<?= $_POST['init_point'] ?> '">Pagar</button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

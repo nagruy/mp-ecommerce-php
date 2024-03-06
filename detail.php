@@ -183,7 +183,7 @@
                                         
                                     </div>
                                     <?php if ( ! isset( $_GET[ 'status' ] ) ): ?>
-                                        <button type="submit" class="mercadopago-button" formmethod="post" onclick="window.location.href = '<?= $_POST['init_point'] ?> '">“Pagar la compra</button>
+                                        <button type="submit" class="mercadopago-button" formmethod="post" onclick="window.location.href = '<?= $_POST['init_point'] ?> '">Pagar la compra</button>
                                     <?php endif; ?>
                                 </div>
                             </div>

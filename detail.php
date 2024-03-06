@@ -4,7 +4,7 @@
     
     <!-- Script de Seguridad de Mercado Pago -->
     <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
-    
+
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
@@ -183,7 +183,7 @@
                                         
                                     </div>
                                     <?php if ( ! isset( $_GET[ 'status' ] ) ): ?>
-                                        <button type="submit" class="mercadopago-button" formmethod="post" onclick="window.location.href = '<?= $_POST['init_point'] ?> '">Pagar</button>
+                                        <button type="submit" class="mercadopago-button" formmethod="post" onclick="window.location.href = '<?= $_POST['init_point'] ?> '">“Pagar la compra</button>
                                     <?php endif; ?>
                                 </div>
                             </div>

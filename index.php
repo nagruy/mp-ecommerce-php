@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <!-- Script de Seguridad de Mercado Pago -->
-    <script src="https://www.mercadopago.com/v2/security.js" view="search"></script>
-
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
